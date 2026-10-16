@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Portail interne de gestion des inscriptions de Frieden Institut.">
+  <title>Frieden Institut • Portail interne des inscriptions</title>
+  <link id="dynamic-favicon" rel="icon" href="images/kyma-frieden-institut.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="ambient ambient-c"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark"><img id="sidebar-logo" src="images/kyma-frieden-institut.png"
+            alt="KymA Frieden Institut logo">
+        </div>
+        <div class="brand-copy"><strong id="sidebar-company">Frieden Institut</strong><span id="sidebar-course">German
+            Course</span></div>
+      </div>
+      <div class="sidebar-label">ESPACE DE TRAVAIL</div>
+      <nav class="nav-stack">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span><span>Tableau de
+            bord</span><i>01</i></button>
+        <button class="nav-item" data-page="registration"><span class="nav-icon plus">＋</span><span>Nouvelle
+            inscription</span><i>02</i></button>
+        <button class="nav-item" data-page="students"><span
+            class="nav-icon">♙</span><span>Students</span><i>03</i></button>
+        <button class="nav-item" data-page="records"><span class="nav-icon">▤</span><span>All
+            Registrations</span><i>04</i></button>
+        <button class="nav-item" data-page="search"><span class="nav-icon">⌕</span><span>Search</span><i>05</i></button>
+        <button class="nav-item" data-page="receipts"><span
+            class="nav-icon">▣</span><span>Receipts</span><i>06</i></button>
+        <button class="nav-item" data-page="reports"><span
+            class="nav-icon">▥</span><span>Reports</span><i>07</i></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-page="settings"><span
+            class="nav-icon">⚙</span><span>Settings</span><i>08</i></button>
+        <div class="secure-card"><span class="pulse-dot"></span>
+          <div><strong>System online</strong><small>Cloud registration ready</small></div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+        <div class="topbar-title">
+          <div class="eyebrow"><span class="eyebrow-dot"></span><span id="top-eyebrow">INTERNAL SYSTEM • FRIEDEN
+              INSTITUT</span></div>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="topbar-right"><select id="language-select" class="language-select" aria-label="Langue">
+            <option value="fr" selected>🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+            <option value="de">🇩🇪 Deutsch</option>
+          </select>
+          <div class="connection-pill" id="connection-status"><span class="status-dot"></span><span>Cloud
+              connected</span></div>
+          <button class="icon-button" id="refresh-data" title="Refresh registrations"
+            aria-label="Refresh registrations">↻</button>
+          <div class="live-clock"><strong id="live-time">--:--:--</strong><span id="live-date">--/--/----</span></div>
+          <button class="primary small" data-page="registration"><span>＋</span> New Registration</button><button
+            class="ghost small" id="admin-login">Admin Login</button>
+          <div class="staff-identity hidden" id="staff-identity"><span class="staff-avatar"
+              id="staff-avatar">A</span><span><strong id="staff-name">Administrator</strong><small
+                id="staff-role">Administrator</small></span></div><button class="ghost small hidden"
+            id="admin-logout">Sign out</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="page active">
+        <div class="dashboard-hero">
+          <div class="hero-copy">
+            <div class="hero-kicker"><span class="mini-line"></span><span id="dashboard-eyebrow">GERMAN COURSE</span>
+            </div>
+            <h2 id="dashboard-headline">Inscription Management Center</em></h2>
+            <p id="dashboard-description">Create registrations, keep student records organised and generate polished
+              receipts in seconds.</p>
+            <div class="hero-actions"><button class="primary hero-btn" data-page="registration">Create registration
+                <span>↗</span></button><button class="hero-link" data-page="records">Browse registrations
+                <span>→</span></button></div>
+            <div class="hero-trust"><span>FAST WORKFLOW</span><span>•</span><span>GOOGLE SHEETS
+                READY</span><span>•</span><span>PRINT-READY RECEIPTS</span></div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-ring ring-one"></div>
+            <div class="hero-ring ring-two"></div>
+            <div class="logo-card">
+              <div class="logo-card-top"><span>INSTITUT</span><span>EST. 2025</span></div><img
+                src="images/kyma-frieden-institut.png" alt="Frieden Institut" />
+              <div class="logo-card-bottom"><span id="hero-company">FRIEDEN INSTITUT</span><strong
+                  id="hero-initials">FYMA</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card stat-main">
+            <div class="stat-label"><span class="stat-symbol">◎</span><span>Total registrations</span></div><strong
+              id="stat-total">0</strong><small>All students in the system</small>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-symbol yellow">◷</span><span>Today</span></div><strong
+              id="stat-today">0</strong><small>Registrations received today</small>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-symbol blue">◈</span><span>Latest level</span></div><strong
+              id="stat-level">—</strong><small>Most recent learner level</small>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label"><span class="stat-symbol red">#</span><span>Latest reference</span></div><strong
+              class="stat-reference" id="stat-ref">—</strong><small>Use this on future enquiries</small>
+          </div>
+        </div>
+
+        <div class="content-grid two-thirds">
+          <div class="panel recent-panel">
+            <div class="panel-head">
+              <div><span class="section-kicker">ACTIVITY</span>
+                <h3>Recent registrations</h3>
+                <p>Latest submissions from the internal registration system.</p>
+              </div><button class="ghost" data-page="records">View all <span>→</span></button>
+            </div>
+            <div id="recent-table"></div>
+          </div>
+          <div class="panel quick-panel">
+            <div class="panel-head">
+              <div><span class="section-kicker">SHORTCUTS</span>
+                <h3>Quick actions</h3>
+              </div>
+            </div>
+            <div class="quick-list"><button data-page="registration"><span class="quick-icon red-bg">＋</span>
+                <div><strong>New registration</strong><small>Add a student in one flow</small></div><b>→</b>
+              </button><button data-page="search"><span class="quick-icon blue-bg">⌕</span>
+                <div><strong>Find a student</strong><small>Search by name or reference</small></div><b>→</b>
+              </button><button data-page="receipts"><span class="quick-icon yellow-bg">▣</span>
+                <div><strong>Open receipts</strong><small>Print or save as PDF</small></div><b>→</b>
+              </button></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="registration" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">STUDENT INTAKE</span>
+            <h2>New registration</h2>
+            <p>Complete each step. Your information stays here as you move between sections.</p>
+          </div>
+          <div class="intro-badge"><span>03</span><small>steps</small></div>
+        </div>
+        <div class="wizard-steps"><button type="button" class="wizard-step active"
+            data-step-target="0"><b>01</b><span>Personal information</span></button><button type="button"
+            class="wizard-step" data-step-target="1"><b>02</b><span>Services</span></button><button type="button"
+            class="wizard-step" data-step-target="2"><b>03</b><span>Payment</span></button></div>
+        <div class="panel form-panel">
+          <form id="registration-form">
+            <div class="wizard-panel active" data-step="0">
+              <div class="form-section-head"><span class="section-number">01</span>
+                <div>
+                  <h3>Personal information</h3>
+                  <p>Student identity and contact details.</p>
+                </div>
+              </div>
+              <div class="form-grid">
+                <label>First name<input name="firstName" required placeholder="First name"
+                    autocomplete="given-name"></label><label>Last name<input name="lastName" required
+                    placeholder="Last name" autocomplete="family-name"></label>
+                <label>Numéro de passeport<input name="passport" placeholder="Numéro de passeport"></label><label>Numéro
+                  de carte nationale d’identité<input name="nationalId"
+                    placeholder="Numéro de carte nationale d’identité"></label>
+                <label>Date of birth<input name="dob" type="date"></label><label>Phone number<div class="phone-combo">
+                    <select id="phone-country" aria-label="Country code">
+                      <option value="+228" data-flag="🇹🇬">🇹🇬 +228 Togo</option>
+                      <option value="+229">🇧🇯 +229 Benin</option>
+                      <option value="+233">🇬🇭 +233 Ghana</option>
+                      <option value="+234">🇳🇬 +234 Nigeria</option>
+                      <option value="+225">🇨🇮 +225 Cote d'Ivoir</option>
+                      <option value="+221">🇸🇳 +221 </option>
+                      <option value="+33">🇫🇷 +33 France</option>
+                      <option value="+49">🇩🇪 +49 Allemagne</option>
+                      <option value="+1">🇺🇸 +1 Usa / Canada</option>
+                      <option value="+44">🇬🇧 +44 Angletere</option>
+                    </select><input name="phoneLocal" id="phone-local" required
+                      placeholder="Enter number without country code (e.g. 90 12 34 56)" inputmode="tel">
+                  </div></label>
+                <label>Email address<input name="email" type="email" placeholder="name@example.com"></label><label
+                  class="field-wide">Residential address<input name="address"
+                    placeholder="Street, city, country"></label>
+                <label class="field-wide upload-zone" for="studentPhoto"><input id="studentPhoto"
+                    name="studentPhotoFile" type="file" accept="image/*"><strong>＋ Add student
+                    photo</strong><small>Optional · JPG or PNG</small>
+                  <div id="photoPreview" class="photo-preview"></div>
+                </label>
+              </div>
+            </div>
+            <div class="wizard-panel" data-step="1">
+              <div class="form-section-head"><span class="section-number blue-num">02</span>
+                <div>
+                  <h3>Choose services</h3>
+                  <p>Select one or more paid services and any complimentary add-ons.</p>
+                </div>
+              </div>
+              <div class="service-choice-grid">
+                <label class="service-choice"><input type="checkbox" name="service" value="German course"
+                    data-price="0"><span><b>German course</b><small>Choose course type and level to calculate the
+                      fee</small></span></label>
+                <label class="service-choice"><input type="checkbox" name="service"
+                    value="Search German training contract" data-price="100000"><span><b>Search German training
+                      contract</b><small>Application support</small></span></label>
+                <label class="service-choice"><input type="checkbox" name="service" value="Campus France"
+                    data-price="100000"><span><b>Campus France</b><small>Study application
+                      support</small></span></label>
+                <label class="service-choice"><input type="checkbox" name="service" value="Professional training"
+                    data-price="350000"><span><b>Professional training</b><small>Career skills</small></span></label>
+                <label class="service-choice"><input type="checkbox" name="service" value="Driving course"
+                    data-price="100000"><span><b>Driving course</b><small>Driving instruction</small></span></label>
+              </div>
+              <div id="german-options" class="conditional-fields hidden">
+                <h4>German course details</h4>
+                <div class="form-grid"><label>Course type<select name="courseType" id="course-type">
+                      <option value="Day course">Day course</option>
+                      <option value="Evening course">Evening course</option>
+                      <option value="Individual course">Individual course</option>
+                    </select></label><label>Course level<select name="level" id="course-level">
+                      <option value="A1">A1</option>
+                      <option value="A2">A2</option>
+                      <option value="B1">B1</option>
+                      <option value="B2">B2</option>
+                      <option value="C1">C1 · Price to be confirmed</option>
+                      <option value="Exam preparation">Exam preparation</option>
+                    </select></label><label>Start date<input name="start" type="date"></label></div>
+                <p class="field-hint" id="german-price-hint">Services price on the next tab</p>
+              </div>
+              <div class="conditional-fields">
+                <h4>Complimentary add-ons <span>FREE</span></h4>
+                <p>These are free when added to another paid service. Selected add-ons appear on the receipt.</p>
+                <div class="service-choice-grid"><label class="service-choice free-choice"><input type="checkbox"
+                      name="addon" value="Driving introduction"><span><b>Driving introduction</b><small>Complimentary
+                        add-on · 0 CFA</small></span></label><label class="service-choice free-choice"><input
+                      type="checkbox" name="addon" value="Baking training"><span><b>Baking
+                        training</b><small>Complimentary add-on · 0 CFA</small></span></label><label
+                    class="service-choice free-choice"><input type="checkbox" name="addon"
+                      value="Career orientation"><span><b>Career orientation</b><small>Complimentary add-on · 0
+                        CFA</small></span></label></div>
+              </div>
+              <label class="field-wide">Additional notes<textarea name="notes" rows="3"
+                  placeholder="Any important details..."></textarea></label>
+            </div>
+            <div class="wizard-panel" data-step="2">
+              <div class="form-section-head"><span class="section-number yellow-num">03</span>
+                <div>
+                  <h3>Payment summary</h3>
+                  <p>Prices are calculated from the services selected.</p>
+                </div>
+              </div>
+              <div id="payment-services" class="payment-services">
+                <p>Select services to calculate the amount.</p>
+              </div>
+              <div class="payment-adjustments"><label>Reduction mode<select name="discountMode" id="discount-mode">
+                    <option value="percent">Percentage (%)</option>
+                    <option value="amount">Fixed amount (CFA)</option>
+                  </select></label><label>Reduction (%)<input type="number" name="reductionPercent"
+                    id="reduction-percent" min="0" max="100" value="0" step="0.1"></label><label>Reduction amount
+                  (CFA)<input type="number" name="reductionAmount" id="reduction-amount" min="0"
+                    value="0"></label><label>Inscription fee (20,000 CFA)<select name="inscriptionStatus"
+                    id="inscription-status">
+                    <option value="Not paid">Not paid</option>
+                    <option value="Paid">Paid</option>
+                  </select></label><label>Service fee status<select name="serviceFeeStatus" id="service-fee-status">
+                    <option value="Not paid">Not paid</option>
+                    <option value="Paid">Paid</option>
+                    <option value="Partially paid">Partially paid</option>
+                  </select></label><label>Amount paid toward service fee (CFA)<input type="number" name="amountPaid"
+                    id="amount-paid" min="0" value="0"></label></div>
+              <div class="payment-totals">
+                <div><span>Service fee</span><b id="pay-subtotal">0 CFA</b></div>
+                <div><span>Reduction</span><b id="pay-reduction">− 0 CFA</b></div>
+                <div><span id="pay-service-total-label">Service fee after reduction (Not paid)</span><b
+                    id="pay-service-total">0 CFA</b></div>
+                <div><span>Inscription fee</span><b id="pay-inscription">20,000 CFA · Not paid</b></div>
+                <div class="payment-grand"><span id="pay-total-label">Total paid</span><b id="pay-total">0 CFA</b></div>
+                <div><span>Balance due</span><b id="pay-balance">0 CFA</b></div>
+              </div>
+              <label>Registration status<select name="registrationStatus">
+                  <option>Registered</option>
+                  <option>Pending</option>
+                  <option>Follow-up required</option>
+                </select></label>
+            </div>
+            <div class="form-actions wizard-actions"><button type="reset" class="ghost" id="clear-registration">Clear
+                form</button><button type="button" class="ghost" id="wizard-back" disabled>← Back</button><span
+                class="wizard-spacer"></span><button type="button" class="primary" id="wizard-next">Étape suivante
+                →</button><button type="submit" class="primary submit-button hidden">Save registration & generate
+                receipt ↗</button></div>
+          </form>
+        </div>
+      </section>
+      <section id="students" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">DIRECTORY</span>
+            <h2>Students</h2>
+            <p>Every learner currently registered in the system.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="students-table"></div>
+        </div>
+      </section>
+      <section id="records" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">DATABASE</span>
+            <h2>All registrations</h2>
+            <p>Central registration records from Google Sheets.</p>
+          </div><button class="ghost" id="export-btn">Export CSV ↗</button>
+        </div>
+        <div class="panel">
+          <div id="records-table"></div>
+        </div>
+      </section>
+      <section id="search" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">FIND</span>
+            <h2>Search students</h2>
+            <p>Find by name, phone, email, level or reference.</p>
+          </div>
+        </div>
+        <div class="panel search-panel">
+          <div class="search-wrap"><span>⌕</span><input id="search-input" class="search-box"
+              placeholder="Search student, phone, email or reference..." autocomplete="off"></div>
+          <div id="search-results"></div>
+        </div>
+      </section>
+      <section id="receipts" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">DOCUMENTS</span>
+            <h2>Receipts</h2>
+            <p>Open, print or save any registration as PDF.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div id="receipts-table"></div>
+        </div>
+      </section>
+      <section id="reports" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">INSIGHTS</span>
+            <h2>Course reports</h2>
+            <p>A quick view of registrations by German level.</p>
+          </div>
+        </div>
+        <div class="panel report-panel">
+          <div id="report-bars"></div>
+        </div>
+      </section>
+      <section id="settings" class="page">
+        <div class="page-intro">
+          <div><span class="section-kicker">CONTROL CENTRE</span>
+            <h2>Settings</h2>
+            <p>Manage branding, receipt content and system details.</p>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="settings-grid">
+            <label>Company name<input id="company-name"></label><label>Course name<input
+                id="course-name"></label><label>Logo initials<input id="logo-initials" maxlength="4"></label>
+            <label>Dashboard eyebrow<input id="dashboard-eyebrow-setting"></label><label>Dashboard headline<input
+                id="dashboard-headline-setting"></label><label>Dashboard description<textarea
+                id="dashboard-description-setting" rows="3"></textarea></label>
+            <label>Receipt title<input id="receipt-title-setting"></label><label>Footer copyright<input
+                id="footer-copyright-setting"></label><label>Footer credit<input id="footer-credit-setting"></label>
+            <div class="settings-section-label">Public company information</div><label>Public tagline<input
+                id="company-tagline-setting" placeholder="Education · Immigration · Mobility"></label><label>Office
+              address<input id="company-address-setting" placeholder="Official office address"></label><label>Phone /
+              WhatsApp<input id="company-phone-setting" placeholder="+228 ..."></label><label>Official email<input
+                id="company-email-setting" type="email" placeholder="contact@example.com"></label><label>Opening
+              hours<input id="company-hours-setting" placeholder="Mon–Fri · 08:00–18:00"></label><label
+              class="field-wide">About Frieden Institut<textarea id="company-about-setting" rows="3"
+                placeholder="Short company description"></textarea></label>
+            <div class="logo-setting"><span class="setting-label">Receipt / dashboard logo</span>
+              <div class="logo-setting-row"><img id="current-logo-preview" class="settings-logo-preview"
+                  src="images/kyma-frieden-institut.png" alt="Current logo">
+                <div><input id="logo-file" type="file" accept="image/*"><small class="field-help">This logo appears on
+                    receipts and the dashboard.</small><button class="ghost logo-remove" id="remove-logo"
+                    type="button">Use default logo</button></div>
+              </div>
+            </div>
+            <div class="logo-setting"><span class="setting-label">Dashboard favicon</span>
+              <div class="logo-setting-row"><img id="current-favicon-preview" class="settings-logo-preview"
+                  src="images/kyma-frieden-institut.png" alt="Current favicon">
+                <div><input id="favicon-file" type="file" accept="image/*"><small class="field-help">The small
+                    browser-tab icon.</small><button class="ghost" id="remove-favicon" type="button">Use default
+                    favicon</button></div>
+              </div>
+            </div>
+          </div>
+          <div class="staff-management" id="staff-management">
+            <div class="staff-head">
+              <div><span class="section-kicker">TEAM ACCESS</span>
+                <h3>Staff accounts</h3>
+                <p>Each team member has an individual login. Their name is recorded automatically on registrations.</p>
+              </div><button class="primary small" id="add-staff">＋ Add staff</button>
+            </div>
+            <div id="staff-table"></div>
+          </div>
+          <div class="settings-actions"><button class="primary" id="save-settings">Save all settings</button><button
+              class="ghost" id="download-excel">Download Excel (.xlsx) ↗</button></div>
+          <p class="field-help settings-note">Google Sheets backend: paste the Apps Script <code>/exec</code> URL into
+            <code>CONFIG.googleAppsScriptUrl</code> in <code>app.js</code>. The dashboard then uses Google Sheets as the
+            central registration database.
+          </p>
+        </div>
+      </section>
+
+      <div id="login-modal" class="modal login-modal login-page">
+        <div class="login-card"><button class="login-close" id="login-close" aria-label="Fermer">×</button>
+          <div class="login-brand"><img src="images/kyma-frieden-institut.png" alt="Frieden Institut">
+            <div><strong>Frieden Institut by KIMA GROUP</strong><span>Accès du personnel et de l’administration</span>
+            </div>
+          </div>
+          <div class="login-kicker">PORTAIL D’ADMINISTRATION INTERNE</div>
+          <h2>Bon retour.</h2>
+          <p>Connectez-vous pour accéder à votre espace de travail.</p><label>Username<input id="login-username"
+              autocomplete="username" value=""></label><label>Password<input id="login-password" type="password"
+              autocomplete="current-password" placeholder="Saisissez votre mot de passe"></label><button
+            class="primary login-submit" id="login-submit">Sign
+            in</button><small class="login-note">© 2026 Développé et conçu par Messways</small>
+        </div>
+      </div>
+      <div id="staff-modal" class="modal hidden">
+        <div class="login-card staff-editor"><button class="login-close" id="staff-close" aria-label="Fermer">×</button>
+          <div class="login-kicker">TEAM ACCESS</div>
+          <h2 id="staff-editor-title">Add staff member</h2>
+          <p>Create an individual account for a team member.</p><input id="staff-edit-username"
+            type="hidden"><label>Full name<input id="staff-edit-name"
+              placeholder="Staff member name"></label><label>Username<input id="staff-edit-username-visible"
+              placeholder="e.g. ama"></label><label>Role<select id="staff-edit-role">
+              <option value="Staff">Personnel</option>
+              <option value="Manager">Responsable</option>
+              <option value="Administrator">Administrateur</option>
+            </select></label><label>Password<input id="staff-edit-password" type="password"
+              placeholder="Leave blank to keep current password"></label><label class="staff-active-toggle"><input
+              id="staff-edit-active" type="checkbox" checked> Active account</label><button class="primary login-submit"
+            id="staff-save">Save staff account</button>
+        </div>
+      </div>
+      <div id="receipt-modal" class="modal hidden">
+        <div class="receipt-wrap">
+          <div class="receipt" id="receipt-content"></div>
+          <div class="modal-actions"><button class="ghost" id="close-receipt">Close</button><button class="primary"
+              id="print-receipt">Print / Download PDF</button></div>
+        </div>
+      </div>
+      <div id="toast" class="toast" role="status" aria-live="polite"><span class="toast-icon">✓</span>
+        <div><strong id="toast-title">Saved</strong><small id="toast-message">Registration saved successfully.</small>
+        </div><button id="toast-close">×</button>
+      </div>
+      <div id="saving-overlay" class="saving-overlay hidden">
+        <div class="saving-card">
+          <div class="loader"></div><strong>Saving registration</strong><small>Sending the record securely to Google
+            Sheets…</small>
+        </div>
+      </div>
+      <footer class="copyright"><span id="footer-copyright">© 2026 Développé et conçu par Messways</span></footer>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+
+</html>
